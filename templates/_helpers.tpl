@@ -60,3 +60,14 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of the namespace to use
+*/}}
+{{- define "mysql-helm-chart.namespace" -}}
+{{- if .Values.namespace.create }}
+{{- default (include "mysql-helm-chart.fullname" .) .Values.namespace.name }}
+{{- else }}
+{{- default "default" .Values.namespace.name }}
+{{- end }}
+{{- end }}

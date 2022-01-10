@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ template "mysql-helm-chart.fullname" . }}
-  namespace: {{ .Values.namespace }}
+  namespace:  {{ include "mysql-helm-chart.namespace" . }}
   labels: {{- include "mysql-helm-chart.labels" . | nindent 4 }}
 spec:
   storageClassName: {{ .Values.persistence.className }}
